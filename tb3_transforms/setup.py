@@ -20,6 +20,7 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
+            'tf_listener = tb3_transforms.tf_listener:main'
         ],
     },
 )
