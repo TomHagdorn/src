@@ -1,4 +1,6 @@
 from setuptools import setup
+import os 
+from glob import glob
 
 package_name = 'my_robot_navigation'
 
@@ -10,6 +12,10 @@ setup(
         ('share/ament_index/resource_index/packages',
             ['resource/' + package_name]),
         ('share/' + package_name, ['package.xml']),
+        (os.path.join('share', package_name, 'launch'), glob('launch/*.launch.py')),
+        (os.path.join('share', package_name, 'config'), glob('config/*.yaml')),
+        # (os.path.join('share', package_name, 'urdf'), glob('maps/*.yaml')),
+        # (os.path.join('share', package_name, 'meshes'), glob('maps/*.pgm')),
     ],
     install_requires=['setuptools'],
     zip_safe=True,
