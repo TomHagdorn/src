@@ -1,0 +1,13 @@
+material apriltag5/Marker
+{
+	technique
+	{
+		pass
+		{
+			texture_unit
+			{
+				texture tag16_05_00005.png
+			}
+		}
+	}
+}

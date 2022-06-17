@@ -1,0 +1,13 @@
+material calibration_target/Marker
+{
+	technique
+	{
+		pass
+		{
+			texture_unit
+			{
+				texture checkerboard.jpg
+			}
+		}
+	}
+}
