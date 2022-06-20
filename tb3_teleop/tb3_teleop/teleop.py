@@ -24,21 +24,21 @@ class Teleop(Node):
             self.estop()
             return
 
-        if msg.buttons[1] == 0:
+        if msg.buttons[1] == 1:
             if self.dms:
                 self.dms = False
                 self.estop()
             return
 
-        if msg.buttons[1] == 1:
+        if msg.buttons[1] == 0:
             self.dms = True
 
 ############# apply joystick commands ##################
         speed_scale = 1.0
         turn_scale = 1.0
 
-        cmd.linear.x = speed_scale * msg.axes[0]
-        cmd.angular.z = turn_scale * msg.axes[1]
+        cmd.linear.x = speed_scale * msg.axes[1]
+        cmd.angular.z = turn_scale * msg.axes[3]
 
         self.pub.publish(cmd)
 
