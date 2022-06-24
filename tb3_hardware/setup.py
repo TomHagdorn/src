@@ -1,5 +1,6 @@
 from setuptools import setup
 from glob import glob 
+import os 
 package_name = 'tb3_hardware'
 
 setup(
