@@ -1,7 +1,11 @@
 import imp
 from setuptools import setup
+<<<<<<< HEAD
 import os 
 from glob import glob
+=======
+from glob import glob 
+>>>>>>> luigi_initial_test
 package_name = 'tb3_hardware'
 
 setup(

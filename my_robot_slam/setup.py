@@ -1,3 +1,6 @@
+import os
+from glob import glob
+
 from setuptools import setup
 import os 
 from glob import glob
@@ -13,12 +16,20 @@ setup(
             ['resource/' + package_name]),
         ('share/' + package_name, ['package.xml']),
         (os.path.join('share', package_name, 'launch'), glob('launch/*.launch.py')),
+<<<<<<< HEAD
 
+=======
+        (os.path.join('share', package_name, 'config'), glob('config/*.yaml')),
+        (os.path.join('share', package_name, 'urdf'), glob('urdf/*.xacro')),
+        (os.path.join('share', package_name, 'meshes'), glob('meshes/*.stl')),
+        (os.path.join('share', package_name, 'maps'), glob('maps/*.yaml')),
+        (os.path.join('share', package_name, 'maps'), glob('meshes/*.pgm')),
+>>>>>>> luigi_initial_test
     ],
     install_requires=['setuptools'],
     zip_safe=True,
-    maintainer='tom',
-    maintainer_email='T.Hagdorn@wzl.rwth-aachen.de',
+    maintainer='mascor',
+    maintainer_email='mascor@todo.todo',
     description='TODO: Package description',
     license='TODO: License declaration',
     tests_require=['pytest'],
