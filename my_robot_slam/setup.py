@@ -20,7 +20,7 @@ setup(
         (os.path.join('share', package_name, 'urdf'), glob('urdf/*.xacro')),
         (os.path.join('share', package_name, 'meshes'), glob('meshes/*.stl')),
         (os.path.join('share', package_name, 'maps'), glob('maps/*.yaml')),
-        (os.path.join('share', package_name, 'maps'), glob('meshes/*.pgm')),
+        (os.path.join('share', package_name, 'maps'), glob('maps/*.pgm')),
     ],
     install_requires=['setuptools'],
     zip_safe=True,

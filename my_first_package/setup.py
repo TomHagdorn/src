@@ -1,6 +1,6 @@
 from setuptools import setup
 
-package_name = 'tb3_teleop'
+package_name = 'my_first_package'
 
 setup(
     name=package_name,
@@ -13,15 +13,13 @@ setup(
     ],
     install_requires=['setuptools'],
     zip_safe=True,
-    maintainer='tom',
-    maintainer_email='T.Hagdorn@wzl.rwth-aachen.de',
+    maintainer='lf4943s',
+    maintainer_email='1999.luigi@gmail.com',
     description='TODO: Package description',
     license='TODO: License declaration',
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'teleop = tb3_teleop.teleop:main',
-            'auto = tb3_teleop.auto:main',
         ],
     },
 )
