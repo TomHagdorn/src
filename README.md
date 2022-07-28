@@ -19,6 +19,18 @@ Launching the Webcam
 ```
 $ ros2 launch usb_cam demo_launch.py
 ```
+<br />
+
+## Autonomous Drive
+<br />
+
+```
+$ ros2 launch tb3_gazebo tb3_arena.launch.py 
+$ ros2 launch my_robot_slam localization.launch.py
+$ ros2 launch my_robot_navigation robot_nav.launch.py
+$ ros2 run my_robot_navigation auto_explorer 
+```
+
 
 ## Zum erstellen der Map braucht man...
 - odometire
