@@ -28,6 +28,7 @@ $ ros2 launch usb_cam demo_launch.py
 $ ros2 launch tb3_gazebo tb3_arena.launch.py 
 $ ros2 launch my_robot_slam localization.launch.py
 $ ros2 launch my_robot_navigation robot_nav.launch.py
+$ ros2 launch apriltag_ros track.launch.py 
 $ ros2 run my_robot_navigation auto_explorer 
 ```
 
