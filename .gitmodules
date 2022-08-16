@@ -1,0 +1,6 @@
+[submodule "apriltag_msgs"]
+	path = apriltag_msgs
+	url = https://github.com/christianrauch/apriltag_msgs
+[submodule "apriltag_ros"]
+	path = apriltag_ros
+	url = https://github.com/christianrauch/apriltag_ros
