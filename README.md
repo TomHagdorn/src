@@ -7,7 +7,7 @@ Team TLD
 
 <br />
 
-## Launch tb3_hardware
+## Launch tb3_hardware via SSH on Turtlebot
 <br />
 
 Launching the Lidarsensor 
@@ -19,18 +19,34 @@ Launching the Webcam
 ```
 $ ros2 launch usb_cam demo_launch.py
 ```
+
+Launch Apriltag Detections
+```
+$ ros2 launch apriltag_ros track.launch.py
+```
 <br />
 
-## Autonomous Drive
+## Autonomous Drive Gazebo 
 <br />
 
 ```
 $ ros2 launch tb3_gazebo tb3_arena.launch.py 
 $ ros2 launch my_robot_slam localization.launch.py
 $ ros2 launch my_robot_navigation robot_nav.launch.py
-$ ros2 launch apriltag_ros track.launch.py 
 $ ros2 run my_robot_navigation auto_explorer 
 ```
+
+<br />
+
+## Autonomous Drive RL
+<br />
+
+```
+$ ros2 launch tb3_description tb3_description.launch.py
+ros2 launch tb3_gazebo robot_state_publisher.launch.py 
+$ ros2 launch my_robot_slam localization.launch.py
+$ ros2 launch my_robot_navigation robot_nav.launch.py
+``` 
 
 
 ## Zum erstellen der Map braucht man...
