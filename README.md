@@ -3,7 +3,7 @@
 <br />
 
 # TB3_TurtleBot
-Team TLD 
+Team Turbo
 
 <br />
 
@@ -11,7 +11,9 @@ Team TLD
 <br />
 
 Launching the Lidarsensor 
+
 ```
+$ sudo chmod 0666 /dev/ttyUSB0
 $ ros2 launch tb3_hardware rplidar.launch.py
 ```
 
@@ -24,9 +26,27 @@ Launch Apriltag Detections
 ```
 $ ros2 launch apriltag_ros track.launch.py
 ```
+Launching the Robot Interface
+```
+$ sudo chmod 0666 /dev/ttyACM0
+$ TURTLEBOT3_MODEL=waffle ros2 launch apriltag_ros robot.launch.py 
+```
 <br />
 
-## Autonomous Drive Gazebo 
+## Launch on System
+<br />
+
+```
+$ ros2 run tb3_teleop teleop
+$ ros2 launch tb3_description tb3_description.launch.py use_sim_time:=false
+$ ros2 launch my_robot_slam localization.launch.py 
+$ ros2 launch my_robot_navigation robot_nav.launch.py 
+$ ros2 run my_robot_navigation auto_explorer
+``` 
+
+<br />
+
+## Autonomous Drive in Gazebo 
 <br />
 
 ```
@@ -35,19 +55,6 @@ $ ros2 launch my_robot_slam localization.launch.py
 $ ros2 launch my_robot_navigation robot_nav.launch.py
 $ ros2 run my_robot_navigation auto_explorer 
 ```
-
-<br />
-
-## Autonomous Drive RL
-<br />
-
-```
-$ ros2 launch tb3_description tb3_description.launch.py
-ros2 launch tb3_gazebo robot_state_publisher.launch.py 
-$ ros2 launch my_robot_slam localization.launch.py
-$ ros2 launch my_robot_navigation robot_nav.launch.py
-``` 
-
 
 ## Zum erstellen der Map braucht man...
 - odometire
