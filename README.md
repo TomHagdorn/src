@@ -3,15 +3,24 @@
 <br />
 
 # TB3_TurtleBot
-Team TLD 
+Team Turbo
 
 <br />
 
-## Launch tb3_hardware
+## Launch tb3_hardware via SSH on Turtlebot
 <br />
+Following Packages need to be installed and build on the Robot: 
+
+```
+apriltag_msgs
+apriltag_ros
+tb3_hardware
+```
 
 Launching the Lidarsensor 
+
 ```
+$ sudo chmod 0666 /dev/ttyUSB0
 $ ros2 launch tb3_hardware rplidar.launch.py
 ```
 
@@ -19,26 +28,47 @@ Launching the Webcam
 ```
 $ ros2 launch usb_cam demo_launch.py
 ```
+
+Launch Apriltag Detections
+```
+$ ros2 launch apriltag_ros track.launch.py
+```
+Launching the Robot Interface
+```
+$ sudo chmod 0666 /dev/ttyACM0
+$ TURTLEBOT3_MODEL=waffle ros2 launch apriltag_ros robot.launch.py 
+```
 <br />
 
-## Autonomous Drive
+## Launch on System
+<br />
+
+```
+$ ros2 run tb3_teleop teleop
+$ ros2 launch tb3_description tb3_description.launch.py use_sim_time:=false
+$ ros2 launch my_robot_slam localization.launch.py use_sim_time:=false
+$ ros2 launch my_robot_navigation robot_nav.launch.py use_sim_time:=false
+$ ros2 run my_robot_navigation auto_explorer
+``` 
+
+<br />
+
+## Autonomous Drive in Gazebo 
 <br />
 
 ```
 $ ros2 launch tb3_gazebo tb3_arena.launch.py 
 $ ros2 launch my_robot_slam localization.launch.py
 $ ros2 launch my_robot_navigation robot_nav.launch.py
-$ ros2 launch apriltag_ros track.launch.py 
 $ ros2 run my_robot_navigation auto_explorer 
 ```
-
 
 ## Zum erstellen der Map braucht man...
 - odometire
 - tf three
 - slamtoolbox
 
-## Hinweis: usingtime muss bei allen auf **ture** gesetzt werden
+## Hinweis: using simtime muss für Gazebo bei allen auf **ture** gesetzt werden
 
 <br />
 <br />
@@ -64,4 +94,4 @@ $ ros2 run my_robot_navigation auto_explorer
 
 - zum laufen Bringen des Roboters
 - Kamera und Lidarsensor publishen und auf remote PC empfangen
-- Feierabendbier trinken und die 1.0 genießen
+- Feierabendbier trinken 
