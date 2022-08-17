@@ -9,6 +9,13 @@ Team Turbo
 
 ## Launch tb3_hardware via SSH on Turtlebot
 <br />
+Following Packages need to be installed and build on the Robot: 
+
+```
+apriltag_msgs
+apriltag_ros
+tb3_hardware
+```
 
 Launching the Lidarsensor 
 
@@ -39,8 +46,8 @@ $ TURTLEBOT3_MODEL=waffle ros2 launch apriltag_ros robot.launch.py
 ```
 $ ros2 run tb3_teleop teleop
 $ ros2 launch tb3_description tb3_description.launch.py use_sim_time:=false
-$ ros2 launch my_robot_slam localization.launch.py 
-$ ros2 launch my_robot_navigation robot_nav.launch.py 
+$ ros2 launch my_robot_slam localization.launch.py use_sim_time:=false
+$ ros2 launch my_robot_navigation robot_nav.launch.py use_sim_time:=false
 $ ros2 run my_robot_navigation auto_explorer
 ``` 
 
@@ -61,7 +68,7 @@ $ ros2 run my_robot_navigation auto_explorer
 - tf three
 - slamtoolbox
 
-## Hinweis: usingtime muss bei allen auf **ture** gesetzt werden
+## Hinweis: using simtime muss für Gazebo bei allen auf **ture** gesetzt werden
 
 <br />
 <br />
@@ -87,4 +94,4 @@ $ ros2 run my_robot_navigation auto_explorer
 
 - zum laufen Bringen des Roboters
 - Kamera und Lidarsensor publishen und auf remote PC empfangen
-- Feierabendbier trinken und die 1.0 genießen
+- Feierabendbier trinken 
