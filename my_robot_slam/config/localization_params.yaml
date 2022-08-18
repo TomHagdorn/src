@@ -38,11 +38,11 @@ amcl:
     z_rand: 0.5
     z_short: 0.05
     scan_topic: scan
-    set_initial_pose: false
+    set_initial_pose: true
     initial_pose:
-      x: 0.0
-      y: 0.0
-      z: 0.0
+      x: -0.012
+      y: -0.017
+      z: -0.802
       yaw: 0.0
 
 amcl_map_client:
