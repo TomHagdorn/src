@@ -15,6 +15,11 @@ Following Packages need to be installed and build on the Robot:
 apriltag_msgs
 apriltag_ros
 tb3_hardware
+Launch on system 1. 
+
+```
+$ ros2 launch tb3_description tb3_description.launch.py use_sim_time:=false
+```
 ```
 
 Launching the Lidarsensor 
@@ -36,7 +41,7 @@ $ ros2 launch apriltag_ros track.launch.py
 Launching the Robot Interface
 ```
 $ sudo chmod 0666 /dev/ttyACM0
-$ TURTLEBOT3_MODEL=waffle ros2 launch apriltag_ros robot.launch.py 
+$ TURTLEBOT3_MODEL=waffle ros2 launch tb3_hardware robot.launch.py 
 ```
 <br />
 
@@ -45,7 +50,6 @@ $ TURTLEBOT3_MODEL=waffle ros2 launch apriltag_ros robot.launch.py
 
 ```
 $ ros2 run tb3_teleop teleop
-$ ros2 launch tb3_description tb3_description.launch.py use_sim_time:=false
 $ ros2 launch my_robot_slam localization.launch.py use_sim_time:=false
 $ ros2 launch my_robot_navigation robot_nav.launch.py use_sim_time:=false
 $ ros2 run my_robot_navigation auto_explorer
