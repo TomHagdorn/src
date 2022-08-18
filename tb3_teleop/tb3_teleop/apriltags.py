@@ -40,11 +40,9 @@ class Apriltag_ID(Node):
 
     def callback(self,msg):
 
-        for x in Apriltags:
-            if msg in Apriltags:
-                Apriltags.pop(x)
-                detect_Aptiltags.pop(x)
-                detect_Aptiltags.insert(x,msg)
+        Apriltags = String
+
+        print(Apriltag_ID)
 
 
 

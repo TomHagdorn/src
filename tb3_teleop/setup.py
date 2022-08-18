@@ -22,6 +22,7 @@ setup(
         'console_scripts': [
             'teleop = tb3_teleop.teleop:main',
             'auto = tb3_teleop.auto:main',
+            'test = tb3_teleop.test:main',
             'apriltags = tb3_teleop.apriltags:main',
         ],
     },
