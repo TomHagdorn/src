@@ -15,12 +15,12 @@ Following Packages need to be installed and build on the Robot:
 apriltag_msgs
 apriltag_ros
 tb3_hardware
-Launch on system 1. 
-
+```
+Launch on system first
 ```
 $ ros2 launch tb3_description tb3_description.launch.py use_sim_time:=false
 ```
-```
+
 
 Launching the Lidarsensor 
 
