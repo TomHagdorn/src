@@ -18,7 +18,7 @@ tb3_hardware
 ```
 Launch on system first
 ```
-$ ros2 launch tb3_description tb3_description.launch.py use_sim_time:=false
+$ ros2 launch tb3_description tb3_description.launch.py 
 ```
 
 
@@ -31,7 +31,8 @@ $ ros2 launch tb3_hardware rplidar.launch.py
 
 Launching the Webcam
 ```
-$ ros2 launch usb_cam demo_launch.py
+$ cd ~/robot_ws/src/tb3_hardware/config
+$ ros2 run usb_cam usb_cam_node_exe --ros-args --params-file ./camera_params.yaml
 ```
 
 Launch Apriltag Detections
@@ -50,8 +51,8 @@ $ TURTLEBOT3_MODEL=waffle ros2 launch tb3_hardware robot.launch.py
 
 ```
 $ ros2 run tb3_teleop teleop
-$ ros2 launch my_robot_slam localization.launch.py use_sim_time:=false
-$ ros2 launch my_robot_navigation robot_nav.launch.py use_sim_time:=false
+$ ros2 launch my_robot_slam localization.launch.py 
+$ ros2 launch my_robot_navigation robot_nav.launch.py 
 $ ros2 run my_robot_navigation auto_explorer
 ``` 
 
