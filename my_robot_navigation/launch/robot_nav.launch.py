@@ -22,8 +22,8 @@ def generate_launch_description():
     autostart = LaunchConfiguration('autostart')
 
     # Launch configuration variables specific to simulation
-    # rviz_config_file = LaunchConfiguration('rviz_config_file')
-    # use_rviz = LaunchConfiguration('use_rviz')
+    rviz_config_file = LaunchConfiguration('rviz_config_file')
+    use_rviz = LaunchConfiguration('use_rviz')
 
     # Declare the launch arguments
     declare_use_sim_time_cmd = DeclareLaunchArgument(
@@ -47,22 +47,22 @@ def generate_launch_description():
         'autostart', default_value='true',
         description='Automatically startup the nav2 stack')
 
-    # declare_rviz_config_file_cmd = DeclareLaunchArgument(
-    #     'rviz_config_file',
-    #     default_value=os.path.join(bringup_dir, 'rviz', 'nav2_default_view.rviz'),
-    #     description='Full path to the RVIZ config file to use')
+    declare_rviz_config_file_cmd = DeclareLaunchArgument(
+        'rviz_config_file',
+        default_value=os.path.join(bringup_dir, 'rviz', 'nav2_default_view.rviz'),
+        description='Full path to the RVIZ config file to use')
 
-    # declare_use_rviz_cmd = DeclareLaunchArgument(
-    #     'use_rviz',
-    #     default_value='True',
-    #     description='Whether to start RVIZ')
+    declare_use_rviz_cmd = DeclareLaunchArgument(
+        'use_rviz',
+        default_value='True',
+        description='Whether to start RVIZ')
 
-    ## Specify the actions
-    # rviz_cmd = IncludeLaunchDescription(
-    #     PythonLaunchDescriptionSource(os.path.join(launch_dir, 'rviz_launch.py')),
-    #     launch_arguments={'namespace': '',
-    #                       'use_namespace': 'False',
-    #                       'rviz_config': rviz_config_file}.items())
+    # Specify the actions
+    rviz_cmd = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource(os.path.join(launch_dir, 'rviz_launch.py')),
+        launch_arguments={'namespace': '',
+                          'use_namespace': 'False',
+                          'rviz_config': rviz_config_file}.items())
 
     nav_cmd = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(os.path.join(launch_dir, 'navigation_launch.py')),
@@ -82,11 +82,11 @@ def generate_launch_description():
     ld.add_action(declare_bt_xml_cmd)
     ld.add_action(declare_autostart_cmd)
 
-    # ld.add_action(declare_rviz_config_file_cmd)
-    # ld.add_action(declare_use_rviz_cmd)
+    ld.add_action(declare_rviz_config_file_cmd)
+    ld.add_action(declare_use_rviz_cmd)
 
     # Add the actions to launch all of the navigation nodes
-    # ld.add_action(rviz_cmd)
+    ld.add_action(rviz_cmd)
     ld.add_action(nav_cmd)
 
     return ld
