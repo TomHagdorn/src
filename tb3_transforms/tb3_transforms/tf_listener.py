@@ -20,7 +20,7 @@ def timercallback():
     global tfBuffer
     try:
         # do a lookup transform between 'base_link' and 'marker' frame
-        trans = tfBuffer.lookup_transform("base_link", "marker", rclpy.duration.Duration())
+        trans = tfBuffer.lookup_transform("map", "marker", rclpy.duration.Duration())
         # returns TransformStamped() message
         printer(trans)
         tfBuffer.clear()
