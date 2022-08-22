@@ -64,6 +64,8 @@ $ ros2 run my_robot_navigation auto_explorer
 $ ros2 launch tb3_gazebo tb3_arena.launch.py 
 $ ros2 launch my_robot_slam localization.launch.py
 $ ros2 launch my_robot_navigation robot_nav.launch.py
+$ ros2 launch apriltag_ros track.launch.py 
+$ ros2 run tb3_teleop apriltags   #Print out the Position of Apriltag in comparison to given frame. 
 $ ros2 run my_robot_navigation auto_explorer 
 ```
 
@@ -96,6 +98,6 @@ $ ros2 run my_robot_navigation auto_explorer
 
 ## Was ist noch zu machen?
 
-- zum laufen Bringen des Roboters
+- zum laufen Bringen des Roboters hat nur knapp 60h gedauert
 - Kamera und Lidarsensor publishen und auf remote PC empfangen
-- Feierabendbier trinken 
+- Feierabendbier trinken (Ha schön wäre es gewesen diesr commit wird um 5:35 an nem sonntag gemacht)
