@@ -32,9 +32,9 @@ def timercallback():
     except:
         # exception is raised on extrapolation, 
         # no connection between frames or when frames dont exist
-        print("lookup failed") 
+        print("lookup failed")
     
-    
+
 def april_sub(msg):
     global april_id
     try: 

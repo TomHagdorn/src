@@ -8,41 +8,30 @@ from rclpy.node import Node
 from sensor_msgs.msg import Joy
 from geometry_msgs.msg import Twist
 from tkinter import*
-from apriltag_msgs.msg import AprilTagDetectionArray
+from geometry_msgs.msg import TransformStamped
 ############# create a node class  #####################
 
 
 class Apriltag_ID(Node):
     def __init__(self): 
         super().__init__("apriltag_id") 
-        self.create_timer(0.1, self.callback)
-        self.create_subscription(AprilTagDetectionArray, "/apriltag/detections", self.callback, 10) #TODO das ist kein string 
+        self.create_subscription(TransformStamped, "/apriltag_map_stamped", self.callback, 10) 
 
-        self.window =    Tk(className=" Apriltag_ID")
-        self.window.geometry('500x500+0+0')
-        self.window.attributes('-topmost', True)
+
 
 
         global Apriltags
         global detect_Aptiltags     
-        Apriltags =  ["Offene Apriltags", "1","2","3","4","5","6","7","8","9","10"]
-        detect_Aptiltags=["Gefundene Apriltags","","","","","","","","","",""]
+        Apriltags =  [1,2,3,4,5,6,7,8,9,10]
+        detect_Aptiltags=["","","","","","","","","",""]
 
-
-        height = 11
-        width = 2
-        
-        for i in range(height): #Rows
-            for j in range(width): #Columns
-                Label(self.window, text= Apriltags[i] ,borderwidth=1 ).grid(row=i,column=1)
-                Label(self.window, text= detect_Aptiltags[i] ,borderwidth=1 ).grid(row=i,column=2)
-
-        
 
     def callback(self,msg):
-        self.window.mainloop()
+        
         try:
-            tag_id = str(msg.detections[0].id)
+            tag_id_str = msg.child_frame_id
+            tag_id = int(tag_id_str[6:])
+            tag_tranform = msg.transform
         except:
             None
 
@@ -50,8 +39,27 @@ class Apriltag_ID(Node):
             if tag_id in Apriltags:
                 Apriltags.pop(x)
                 detect_Aptiltags.pop(x)
-                detect_Aptiltags.insert(x,tag_id)
-        print("Detected:"+ detect_Aptiltags)
+                detect_Aptiltags.insert(x,tag_id_str)
+                #Print message to terminal 
+                printer(msg,tag_id)
+                #Write ID and Transform to a textfile for later 
+                with open('/home/tom/robotik3_ws/src/tb3_teleop/apriltag_positions.txt', 'w') as f:
+                    f.write(tag_id_str +  str(tag_tranform))
+
+                    
+def printer(trans: TransformStamped,april_id):
+    print("----------------------------------------")
+    print("Tag_frame: " + str(april_id))
+    print("Position: ")
+    print("  X: " + str(trans.transform.translation.x))
+    print("  Y: " + str(trans.transform.translation.y))
+    print("  Z: " + str(trans.transform.translation.z))
+    print("Orientation: ")
+    print("  X: " + str(trans.transform.rotation.x))
+    print("  Y: " + str(trans.transform.rotation.y))
+    print("  Z: " + str(trans.transform.rotation.z))
+    print("  W: " + str(trans.transform.rotation.w))            
+
 
 def main():
     rclpy.init()
