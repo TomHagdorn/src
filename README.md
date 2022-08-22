@@ -36,7 +36,7 @@ $ ros2 launch usb_cam demo_launch.py
 
 Launch Apriltag Detections
 ```
-$ ros2 launch apriltag_ros track.launch.py
+$ ros2 launch apriltag_ros track.launch.py   # to run in sim remove /camera bevore the camera topics in launch 
 ```
 Launching the Robot Interface
 ```
@@ -64,7 +64,7 @@ $ ros2 run my_robot_navigation auto_explorer
 $ ros2 launch tb3_gazebo tb3_arena.launch.py 
 $ ros2 launch my_robot_slam localization.launch.py
 $ ros2 launch my_robot_navigation robot_nav.launch.py
-$ ros2 launch apriltag_ros track.launch.py
+$ ros2 launch apriltag_ros track.launch.py     # to run in sim add /camera bevore the camera topics in launch 
 $ ros2 ros2 run tb3_transforms tf_listener 
 $ ros2 run tb3_teleop apriltags.py
 $ ros2 run my_robot_navigation auto_explorer 
