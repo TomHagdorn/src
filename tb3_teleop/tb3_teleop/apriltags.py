@@ -8,18 +8,19 @@ from rclpy.node import Node
 from sensor_msgs.msg import Joy
 from geometry_msgs.msg import Twist
 from tkinter import*
-from std_msgs.msg import String
+from apriltag_msgs.msg import AprilTagDetectionArray
 ############# create a node class  #####################
 
 
 class Apriltag_ID(Node):
     def __init__(self): 
         super().__init__("apriltag_id") 
-        self.create_subscription(String, "/apriltag/detections", self.callback, 10)
+        self.create_timer(0.1, self.callback)
+        self.create_subscription(AprilTagDetectionArray, "/apriltag/detections", self.callback, 10) #TODO das ist kein string 
 
-        window =    Tk(className=" Apriltag_ID")
-        window.geometry('500x500+0+0')
-        window.attributes('-topmost', True)
+        self.window =    Tk(className=" Apriltag_ID")
+        self.window.geometry('500x500+0+0')
+        self.window.attributes('-topmost', True)
 
 
         global Apriltags
@@ -30,29 +31,27 @@ class Apriltag_ID(Node):
 
         height = 11
         width = 2
-
+        
         for i in range(height): #Rows
             for j in range(width): #Columns
-                Label(window, text= Apriltags[i] ,borderwidth=1 ).grid(row=i,column=1)
-                Label(window, text= detect_Aptiltags[i] ,borderwidth=1 ).grid(row=i,column=2)
+                Label(self.window, text= Apriltags[i] ,borderwidth=1 ).grid(row=i,column=1)
+                Label(self.window, text= detect_Aptiltags[i] ,borderwidth=1 ).grid(row=i,column=2)
 
-        window.mainloop()
+        
 
     def callback(self,msg):
+        self.window.mainloop()
+        try:
+            tag_id = str(msg.detections[0].id)
+        except:
+            None
 
         for x in Apriltags:
-            if msg in Apriltags:
+            if tag_id in Apriltags:
                 Apriltags.pop(x)
                 detect_Aptiltags.pop(x)
-                detect_Aptiltags.insert(x,msg)
-
-
-
-    
-
-
-
-	
+                detect_Aptiltags.insert(x,tag_id)
+        print("Detected:"+ detect_Aptiltags)
 
 def main():
     rclpy.init()
@@ -60,9 +59,8 @@ def main():
     try:
         rclpy.spin(node)
     except KeyboardInterrupt:
-        pass
-    node.destroy_node()
-    rclpy.shutdown()
+        node.destroy_node()
+        rclpy.shutdown()
 
 if __name__ == "__main__":
     main()

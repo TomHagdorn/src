@@ -14,6 +14,7 @@ def generate_launch_description():
     bringup_dir = get_package_share_directory('nav2_bringup')
     launch_dir = os.path.join(bringup_dir, 'launch')
     config_dir = os.path.join((get_package_share_directory('my_robot_navigation')), 'config')
+    bt_dir = os.path.join((get_package_share_directory('my_robot_navigation')), 'behavior_trees')
 
     # Create the launch configuration variables
     use_sim_time = LaunchConfiguration('use_sim_time')
@@ -42,6 +43,12 @@ def generate_launch_description():
             get_package_share_directory('nav2_bt_navigator'),
             'behavior_trees', 'navigate_w_replanning_and_recovery.xml'),
         description='Full path to the behavior tree xml file to use')
+
+    # declare_bt_xml_cmd = DeclareLaunchArgument(
+    #     'default_bt_xml_filename',
+    #     default_value=os.path.join(bt_dir, 'navigate_w_replanning_and_recovery.xml'),
+    #     description='Full path to the behavior tree xml file to use')
+
 
     declare_autostart_cmd = DeclareLaunchArgument(
         'autostart', default_value='true',
