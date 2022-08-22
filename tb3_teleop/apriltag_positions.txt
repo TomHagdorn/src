@@ -1,0 +1,1 @@
+marker2geometry_msgs.msg.Transform(translation=geometry_msgs.msg.Vector3(x=1.6628048847491312, y=0.5772821522754956, z=0.29003380530853495), rotation=geometry_msgs.msg.Quaternion(x=0.6142594306249689, y=0.35245995756403703, z=-0.6105583996939198, w=0.35450778660763693))
