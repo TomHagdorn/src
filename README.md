@@ -31,7 +31,8 @@ $ ros2 launch tb3_hardware rplidar.launch.py
 
 Launching the Webcam
 ```
-$ ros2 launch usb_cam demo_launch.py
+$ cd ~/robot_ws/src/tb3_hardware/config
+$ ros2 run usb_cam usb_cam_node_exe --ros-args --params-file ./camera_params.yaml
 ```
 
 Launch Apriltag Detections
