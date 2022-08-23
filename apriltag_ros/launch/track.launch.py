@@ -40,4 +40,3 @@ def generate_launch_description():
         composable_node_descriptions=[composable_node],
         output='screen'
     )
-    return launch.LaunchDescription([container])
