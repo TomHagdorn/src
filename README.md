@@ -5,6 +5,17 @@
 # TB3_TurtleBot
 Team Turbo
 
+Launch Order
+Description A
+RVIZ   After this you can check everything.
+Lidar
+Cam 
+Robot.launch
+
+SLam
+NAV
+
+
 <br />
 
 ## Launch tb3_hardware via SSH on Turtlebot
@@ -50,7 +61,7 @@ $ TURTLEBOT3_MODEL=waffle ros2 launch tb3_hardware robot.launch.py
 <br />
 
 ```
-$ ros2 run tb3_teleop teleop
+($ ros2 run tb3_teleop teleop)  Just for teleoperation 
 $ ros2 launch my_robot_slam localization.launch.py use_sim_time:=false
 $ ros2 launch my_robot_navigation robot_nav.launch.py use_sim_time:=false
 $ ros2 run my_robot_navigation auto_explorer
