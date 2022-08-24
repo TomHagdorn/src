@@ -25,9 +25,9 @@ def timercallback():
     try:
         # do a lookup transform between 'base_link' and 'marker' frame
         trans = tfBuffer.lookup_transform(frame_id, "marker" + str(april_id), rclpy.duration.Duration())
-        #trans = tfBuffer.lookup_transform(frame_id, "odom", rclpy.duration.Duration())
+        #trans = tfBuffer.lookup_transform(frame_id, "camera_lens_link", rclpy.duration.Duration())
         # returns TransformStamped() message
-        printer(trans,april_id)
+        #printer(trans,april_id)
         #tfBuffer.clear()
         april_transform_pub.publish(trans)
     except:
@@ -50,7 +50,7 @@ def main():
     global tfBuffer
     global frame_id
     global april_transform_pub
-    frame_id = 'map'
+    frame_id = 'camera_lens_link'
     rclpy.init() # init ros client library
     nh = rclpy.create_node('tf2_listener') # create a node with name 'tf2_listener'
     tfBuffer = tf2_ros.Buffer(cache_time=rclpy.duration.Duration(nanoseconds=100000000)) # create a TF2 buffer which saves the TFs for given cache_time
